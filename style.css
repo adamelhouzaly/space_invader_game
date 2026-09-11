@@ -1,0 +1,238 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap");
+
+:root {
+  --bg: #050816;
+  --panel: #0d1633;
+  --panel-border: #273b77;
+  --text: #e9f1ff;
+  --muted: #9eb0dd;
+  --green: #62ff9b;
+  --pink: #ff4fd8;
+  --blue: #62b8ff;
+  --yellow: #ffe75f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  color: var(--text);
+  font-family: "Space Mono", monospace;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(98, 184, 255, 0.12), transparent 25rem),
+    radial-gradient(circle at 85% 80%, rgba(255, 79, 216, 0.1), transparent 28rem),
+    var(--bg);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.game-page {
+  width: min(960px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 3rem;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.7rem;
+  color: var(--pink);
+  font-size: 0.75rem;
+  letter-spacing: 0.13em;
+}
+
+h1,
+h2 {
+  font-family: "Press Start 2P", monospace;
+}
+
+h1 {
+  margin: 0;
+  color: var(--green);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  line-height: 1.5;
+  text-shadow: 0 0 18px rgba(98, 255, 155, 0.6);
+}
+
+h2 {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  line-height: 1.6;
+}
+
+.restart-button,
+.start-button {
+  border: 2px solid var(--green);
+  border-radius: 0.35rem;
+  padding: 0.8rem 1rem;
+  color: #06110b;
+  font-weight: 700;
+  background: var(--green);
+  box-shadow: 0 0 18px rgba(98, 255, 155, 0.35);
+}
+
+.restart-button:hover,
+.start-button:hover {
+  color: var(--text);
+  background: transparent;
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.hud-item {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.85rem;
+  border: 1px solid var(--panel-border);
+  border-radius: 0.5rem;
+  background: rgba(13, 22, 51, 0.8);
+}
+
+.hud-label {
+  color: var(--muted);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.hud-item span:last-child {
+  color: var(--yellow);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.game-shell {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--panel-border);
+  border-radius: 0.6rem;
+  background: #02040d;
+  box-shadow: 0 0 40px rgba(98, 184, 255, 0.15);
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1.5px);
+  background-size: 42px 42px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(2, 4, 13, 0.75);
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay-card {
+  width: min(520px, 100%);
+  padding: 2rem;
+  border: 1px solid var(--panel-border);
+  border-radius: 0.65rem;
+  text-align: center;
+  background: rgba(13, 22, 51, 0.96);
+  box-shadow: 0 0 32px rgba(98, 184, 255, 0.2);
+}
+
+.overlay-card p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.overlay-card strong {
+  color: var(--yellow);
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.controls button {
+  min-height: 54px;
+  border: 1px solid var(--panel-border);
+  border-radius: 0.45rem;
+  color: var(--text);
+  font-size: 1.1rem;
+  background: var(--panel);
+}
+
+.controls #shoot-button {
+  color: #201900;
+  font-weight: 700;
+  background: var(--yellow);
+}
+
+.controls button:active {
+  transform: translateY(2px);
+}
+
+.instructions {
+  margin: 1.25rem auto 0;
+  max-width: 720px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .controls {
+    width: 420px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .game-page {
+    width: min(100% - 1rem, 960px);
+    padding-top: 1rem;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .restart-button {
+    width: 100%;
+  }
+
+  .hud-item {
+    padding: 0.65rem;
+  }
+
+  .hud-item span:last-child {
+    font-size: 1rem;
+  }
+
+  .overlay-card {
+    padding: 1.25rem;
+  }
+}
