@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="A classic Space Invaders-inspired browser game."
+  />
+  <title>Space Invaders</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-page">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">CLASSIC ARCADE</p>
+        <h1>SPACE INVADERS</h1>
+      </div>
+
+      <button id="restart-button" class="restart-button" type="button">
+        Restart Game
+      </button>
+    </header>
+
+    <section class="hud" aria-label="Game status">
+      <div class="hud-item">
+        <span class="hud-label">Score</span>
+        <span id="score">0</span>
+      </div>
+
+      <div class="hud-item">
+        <span class="hud-label">Lives</span>
+        <span id="lives">3</span>
+      </div>
+
+      <div class="hud-item">
+        <span class="hud-label">Level</span>
+        <span id="level">1</span>
+      </div>
+    </section>
+
+    <section class="game-shell">
+      <canvas
+        id="game-canvas"
+        width="800"
+        height="600"
+        aria-label="Space Invaders game area"
+      ></canvas>
+
+      <div id="overlay" class="overlay">
+        <div class="overlay-card">
+          <p class="eyebrow">READY PLAYER ONE</p>
+          <h2>Defend Earth</h2>
+          <p>
+            Move with <strong>A / D</strong> or <strong>← / →</strong>.
+            Shoot with <strong>Space</strong>.
+          </p>
+          <button id="start-button" class="start-button" type="button">
+            Start Game
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="Mobile game controls">
+      <button id="left-button" type="button" aria-label="Move left">◀</button>
+      <button id="shoot-button" type="button" aria-label="Shoot">FIRE</button>
+      <button id="right-button" type="button" aria-label="Move right">▶</button>
+    </section>
+
+    <p class="instructions">
+      Destroy every invader before they reach the bottom. Each new level moves
+      faster.
+    </p>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
